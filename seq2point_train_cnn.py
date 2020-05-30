@@ -22,7 +22,7 @@ Created on Thu Dec  1 15:00:27 2016
 """
 
 import os
-from cnnModel_cnn import get_model
+from cnn_Model import get_model
 from DataProvider import ChunkDoubleSourceSlider2
 import NetFlowExt as nf
 from Logger import log
