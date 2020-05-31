@@ -69,10 +69,12 @@ Notice: the code of seq2point_train.py is same with seq2point_train_cnn.py excep
 
 1. For experiment 1 based on REDD dataset, train our model and seq2point(Zhang) for (ex:dishwasher),respectively.
 `python3 seq2point_train.py --appliance_name dishwasher --datadir ./dataset_management/redd/ --save_dir ./trained_model_BitcnNILM --transfer_model False > dishwasher.log`
+
 `python3 seq2point_train_cnn.py --appliance_name dishwasher --datadir ./dataset_management/redd/ --save_dir ./trained_model_CNN --transfer_model False > dishwasher.log`
 
 2. For experiment 2 based on UK-DALE dataset, train our model and seq2point(Zhang) for （ex:washingmachine),respectively.
 `python3 seq2point_train.py --appliance_name washingmachine --datadir ../dataset_management/uk_no2/ --save_dir ./trained_model_BitcnNILM --transfer_model False > washingmachine.log`
+
 `python3 seq2point_train_cnn.py --appliance_name washingmachine --datadir ../dataset_management/uk_no2/ --save_dir ./trained_model_CNN --transfer_model False > washingmachine.log`
 
 ## **Test**
@@ -81,10 +83,12 @@ The prediction is stored and saved in .npy file together with aggregate and grou
 
 1. For experiment 1 based on REDD dataset, test our model and seq2point(Zhang) in all time samples for (ex:washingmachine),respectively.
 `python3 seq2point_test.py --appliance_name washingmachine --datadir ./dataset_management/redd/ --trained_model_dir ./trained_model_BitcnNILM --save_results_dir ./result --transfer False --plot_results True > washingmachine.log`
+
 `python3 seq2point_test_cnn.py --appliance_name washingmachine --datadir ./dataset_management/redd/ --trained_model_dir ./trained_model_CNN --save_results_dir ./result --transfer False --plot_results True > washingmachine.log`
 
 2. For experiment 2 based on UK-DALE dataset, test our model and seq2point(Zhang) in all time samples for (ex:washingmachine),respectively.
 `python3 seq2point_test.py --appliance_name washingmachine --datadir ../dataset_management/uk_no2/ --trained_model_dir ./trained_model_BitcnNILM --save_results_dir ./result --transfer False --plot_results True > washingmachine.log`
+
 `python3 seq2point_test_cnn.py --appliance_name washingmachine --datadir ../dataset_management/uk_no2/ --trained_model_dir ./trained_model_CNN --save_results_dir ./result --transfer False --plot_results True > washingmachine.log`
 
 
