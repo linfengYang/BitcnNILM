@@ -2,6 +2,12 @@
 This code compare our method with Seq2point(Zhang), which proposed in Thirty-Second AAAI Conference on Articial Intelligence (AAAI-18), Feb. 2-7, 2018.  
 
 
+# Reference: 
+Chaoyun Zhang, Mingjun Zhong, Zongzuo Wang, Nigel Goddard, and Charles Sutton. "Sequence-to-point learning with neural networks for nonintrusive load monitoring." Thirty-Second AAAI Conference on Artificial Intelligence (AAAI-18), Feb. 2-7, 2018. 
+
+The code based on Seq2point(Zhang) for fair comparison. https://github.com/MingjunZhong/transferNILM/
+
+
 **Requirements**
 
     1. Create your virtual environment Python > 3.5
