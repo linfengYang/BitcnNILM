@@ -18,9 +18,8 @@ This code compare our method with Seq2point(Zhang), which proposed in Thirty-Sec
         * Remember a GPU support is highly recommended for training
 
 
-    Install Keras > 2.1.5
+    3. Install Keras > 2.1.5
 
-    Clone this repository
     
 # How to use the code and then reproduce our experiment. 
 In this project, you can prepare the dataset, train the network and test it. 
