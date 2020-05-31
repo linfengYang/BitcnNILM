@@ -18,7 +18,10 @@ Created on Thu Dec  1 15:00:27 2016
 # Thirty-Second AAAI Conference on Articial Intelligence (AAAI-18), Feb. 2-7, 2018.
 ####################################################################################
 
-
+Updated on Apr 2018:
+- Python 3
+- TensorFlow 1.6.0
+- Keras 2.1.5
 """
 
 import os

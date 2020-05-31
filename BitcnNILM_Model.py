@@ -22,7 +22,7 @@ import h5py
 import argparse
 
 
-# Model setting begin, use in Sequence to point Learning based on bidirectional dilated residual network for nilm  
+# Model setting begin, used in Sequence to point Learning based on bidirectional dilated residual network for nilm  
 nb_filters=128
 filter_length = 3
 dilations=[1,2,4,8,16,32,64,128]

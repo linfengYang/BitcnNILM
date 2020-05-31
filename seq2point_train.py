@@ -1,7 +1,5 @@
 """
-
 Revised by Jia, the code almost same with seq2point_train_cnn.py except for importing different model.
-Train BitcnNILM_Model
 
 """
 

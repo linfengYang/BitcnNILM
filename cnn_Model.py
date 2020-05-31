@@ -15,12 +15,6 @@ tf.disable_v2_behavior()
 import h5py
 import argparse
 
-"""
-Model from 
-“Sequence- to-point learning with neural networks for nonintrusive load monitoring,” in The Thirty-
-Second AAAI Conference on Artificial Intelligence (AAAI- 18), 2018. 
-
-"""
 
 def get_model(appliance, input_tensor, window_length, transfer_dense=False, transfer_cnn=False,
               cnn='kettle', n_dense=1, pretrainedmodel_dir='./models/'):

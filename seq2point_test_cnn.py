@@ -1,9 +1,34 @@
+"""
+Created on Thu Dec  1 15:00:27 2016
+
+####################################################################################
+# This code is to train a neural network to perform energy disaggregation,
+# i.e., given a sequence of electricity mains reading, the algorithm
+# separates the mains into appliances.
+#
+# Inputs: mains windows -- find the window length in params_appliance
+# Targets: appliances windows --
+#
+#
+# This code is written by Michele DIncecco and Mingjun Zhong based on the code from
+# https://github.com/MingjunZhong/NeuralNetNilm (which was written by Chaoyun Zhang and Mingjun Zhong)
+# Reference:
+# Chaoyun Zhang, Mingjun Zhong, Zongzuo Wang, Nigel Goddard, and Charles Sutton.
+# ``Sequence-to-point learning with neural networks for nonintrusive load monitoring."
+# Thirty-Second AAAI Conference on Articial Intelligence (AAAI-18), Feb. 2-7, 2018.
+####################################################################################
+
+Updated on Apr 2018:
+- Python 3
+- TensorFlow 1.6.0
+- Keras 2.1.5
+"""
 
 from Logger import log
 from DataProvider import DoubleSourceProvider3
 import NetFlowExt as nf
 import nilm_metric as nm
-from BitcnNILM_Model import get_model, weights_loader
+from cnn_Model import get_model, weights_loader
 import os
 import numpy as np
 
@@ -99,7 +124,7 @@ log(args)
 
 
 def load_dataset(filename, header=0):
-    data_frame = pd.read_csv(filename,skiprows= None, nrows=args.crop_dataset,header=header,na_filter=False)
+    data_frame = pd.read_csv(filename,skiprows= None, nrows=args.crop_dataset,header=header,na_filter=False) #50000
     # data_frame = pd.read_csv(filename, nrows=None,header=header,na_filter=False)
     test_set_x = np.round(np.array(data_frame.iloc[:, 0], float), 5)
     test_set_y = np.round(np.array(data_frame.iloc[:, 1], float), 5)
@@ -165,16 +190,17 @@ y_ = tf.placeholder(tf.float32,
 # -------------------------------- Keras Network - from model.py -------------------------------------
 inp = Input(tensor=x)
 
-model = get_model(args.appliance_name,
-                  inp,
-                  params_appliance[args.appliance_name]['windowlength'],
-                  )
-
 # model = get_model(args.appliance_name,
 #                   inp,
 #                   params_appliance[args.appliance_name]['windowlength'],
 #                   n_dense=args.dense_layers
-#                   )[0]
+#                   )
+
+model = get_model(args.appliance_name,
+                  inp,
+                  params_appliance[args.appliance_name]['windowlength'],
+                  n_dense=args.dense_layers
+                  )[0]
 
 y = model.outputs
 # ----------------------------------------------------------------------------------------------------
@@ -302,11 +328,12 @@ if args.plot_results:
         # ax1.set_title('Test results on {:}'.format(test_filename), fontsize=16, fontweight='bold', y=1.08)
         ax1.set_ylabel(args.appliance_name.capitalize() + '\n' +'(Watt)')
         ax1.set_xlabel('Time(number of samples)')
-        ax1.legend(['Aggregate', 'Ground Truth', 'S2P(this paper)'],loc='best')
+        # ax1.set_ylabel('W')
+        ax1.legend(['Aggregate', 'Ground Truth', 'S2P(Zhang)'],loc='best')
 
         mng = plt.get_current_fig_manager()
         #mng.resize(*mng.window.maxsize())
-        plt.savefig('{}-BiTCN.pdf'.format(args.appliance_name))
+        plt.savefig('{}-CNN.pdf'.format(args.appliance_name))
         plt.show(fig1)
 
         #subplot
@@ -331,13 +358,13 @@ if args.plot_results:
         plt.axis([0,total,0,3000])
         plt.yticks(np.linspace(0,3000,4,endpoint=True))
         plt.xticks([0,200000,total])
-        plt.ylabel('S2P(this paper)',fontsize = 10)
+        plt.ylabel('S2P(Zhang)',fontsize = 10)
 
-        log('size: x={0}'.format(np.shape(savemains[offset:-offset]))) 
-        log('size: y={0}'.format(np.shape(savepred)))
-        log('size: gt={0}'.format(np.shape(savegt)))
-        plt.subplots_adjust(bottom=0.2, right=0.7, top=0.9, hspace=0.3)
-        plt.savefig('{}-BiTCN_subplot.pdf'.format(args.appliance_name))
+    log('size: x={0}'.format(np.shape(savemains[offset:-offset]))) 
+    log('size: y={0}'.format(np.shape(savepred)))
+    log('size: gt={0}'.format(np.shape(savegt)))
+    plt.subplots_adjust(bottom=0.2, right=0.7, top=0.9, hspace=0.3)
+    plt.savefig('{}-CNN_subplot.pdf'.format(args.appliance_name))
 
 
 
