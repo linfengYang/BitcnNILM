@@ -2,12 +2,6 @@
 This code compare our method with Seq2point(Zhang), which proposed in Thirty-Second AAAI Conference on Articial Intelligence (AAAI-18), Feb. 2-7, 2018.  
 
 
-# Reference: 
-Chaoyun Zhang, Mingjun Zhong, Zongzuo Wang, Nigel Goddard, and Charles Sutton. "Sequence-to-point learning with neural networks for nonintrusive load monitoring." Thirty-Second AAAI Conference on Artificial Intelligence (AAAI-18), Feb. 2-7, 2018. 
-
-The code based on Seq2point(Zhang) for fair comparison. https://github.com/MingjunZhong/transferNILM/
-
-
 **Requirements**
 
     1. Create your virtual environment Python > 3.5
@@ -102,4 +96,7 @@ The prediction is stored and saved in .npy file together with aggregate and grou
 `srun python3 seq2point_test_cnn.py --appliance_name washingmachine --datadir ../dataset_management/uk_no2/ --trained_model_dir ./trained_model_CNN --save_results_dir ./result --transfer False --plot_results True > washingmachine.log`
 
 
+# Reference: 
+Chaoyun Zhang, Mingjun Zhong, Zongzuo Wang, Nigel Goddard, and Charles Sutton. "Sequence-to-point learning with neural networks for nonintrusive load monitoring." Thirty-Second AAAI Conference on Artificial Intelligence (AAAI-18), Feb. 2-7, 2018. 
 
+The code based on Seq2point(Zhang) for fair comparison. https://github.com/MingjunZhong/transferNILM/
