@@ -59,7 +59,7 @@ Download the UK-DALE raw data from the original website (http://jack-kelly.com/d
 
 
 
-## **Training**(
+## **Train**
 The seq2point_train.py(corresponding BitcnNILM_Model- Our model),seq2point_train_cnn.py(corresponding cnn_Model-Seq2point(Zhang) script are the entry points for the training phase. It loads the training dataset, including validation, and it starts the training.
 It uses a script to load CSV dataset file into memory, prepares pairs of 599 samples aggregate data and 1 sample midpoint ground truth.
 After randomly shuffle them, batches of BATCHSIZE size are input to the network for backpropagation purpose.
