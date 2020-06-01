@@ -1,5 +1,5 @@
 # BitcnNILM
-This code compare our method with Seq2point(Zhang), which proposed in Thirty-Second AAAI Conference on Articial Intelligence (AAAI-18), Feb. 2-7, 2018.  
+This code compares our method with Seq2point(Zhang), which was proposed in Thirty-Second AAAI Conference on Articial Intelligence (AAAI-18), Feb. 2-7, 2018.  
 
 
 **Requirements**
