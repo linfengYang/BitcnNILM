@@ -54,7 +54,7 @@ Download the REDD raw data from the original website (http://redd.csail.mit.edu/
 
 `python create_trainset_ukdale.py --data_dir './' --appliance_name 'kettle' --aggregate_mean 522 --aggregate_std 814 --save_path'./'`
 
-Download the UK-DALE raw data from the original website (http://jack-kelly.com/data/). 
+Download the UK-DALE(2015) raw data from the original website (https://data.ukedc.rl.ac.uk/browse/edc/efficiency/residential/EnergyConsumption/Domestic/UK-DALE-2015/UK-DALE-disaggregated). 
 
 
 
