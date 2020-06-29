@@ -6,7 +6,7 @@ This code compares our method with Seq2point(Zhang), which was proposed in Thirt
 
     1. Create your virtual environment Python > 3.5
 
-    2. Install Tensorflow 2.0.0(default) or 1.4 < Tensorflow < 2.0.0 (You need to change our code a little bit) as following:
+    2. Install Tensorflow 2.0.0 and Keras 2.3.1 (Our enviroment) or 1.4 < Tensorflow < 2.0.0 and Keras > 2.1.5 (You need to change our code a little bit) as      following:
 
         * comment           -   import tensorflow.compat.v1 as tf 
                                 tf.disable_v2_behavior()
@@ -17,8 +17,6 @@ This code compares our method with Seq2point(Zhang), which was proposed in Thirt
         
         * Remember a GPU support is highly recommended for training
 
-
-    3. Install Keras > 2.1.5
 
     
 # How to use the code and then reproduce our experiment. 
