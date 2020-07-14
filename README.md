@@ -40,19 +40,21 @@ You should select the following arguments for the argument parser:
 `--save_path SAVE_PATH           The directory to store the training data
 ```
 
+Download the REDD raw data from the original website (http://redd.csail.mit.edu/).
 
 1. For experiment 1, create a REDD dataset (mains and appliance power measurments) for fridge:
 
-`python create_trainset_redd.py --data_dir ./ --appliance_name fridge --aggregate_mean 522 --aggregate_std 814 --save_path ./ `
+`python create_trainset_redd.py --data_dir ./low_freq/ --appliance_name fridge --aggregate_mean 522 --aggregate_std 814 --save_path ./fridge/ `
 
-Download the REDD raw data from the original website (http://redd.csail.mit.edu/).
+
  
+Download the UK-DALE(2015) raw data from the original website (https://data.ukedc.rl.ac.uk/browse/edc/efficiency/residential/EnergyConsumption/Domestic/UK-DALE-2015/UK-DALE-disaggregated). 
 
 2. For experiment 2, create UK-DALE-2015 dataset
 
-`python create_trainset_ukdale.py --data_dir ./ --appliance_name kettle --aggregate_mean 522 --aggregate_std 814 --save_path ./ `
+`python create_trainset_ukdale.py --data_dir ./ukdale/ --appliance_name kettle --aggregate_mean 522 --aggregate_std 814 --save_path ./kettle/`
 
-Download the UK-DALE(2015) raw data from the original website (https://data.ukedc.rl.ac.uk/browse/edc/efficiency/residential/EnergyConsumption/Domestic/UK-DALE-2015/UK-DALE-disaggregated). 
+
 
 
 
