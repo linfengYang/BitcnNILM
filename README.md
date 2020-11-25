@@ -7,9 +7,9 @@ This code is written by Jia, Ziyue based on the code from
 2. https://github.com/MingjunZhong/NeuralNetNilm (which was written by Chaoyun Zhang and Mingjun Zhong)
 3. https://github.com/MingjunZhong/transferNILM/
  
-1. Brewitt, Cillian , and N. Goddard . "Non-Intrusive Load Monitoring with Fully
+[1] Brewitt, Cillian , and N. Goddard . "Non-Intrusive Load Monitoring with Fully
 Convolutional Networks." (2018). arXiv:1812.03915
-2. C. Zhang, M. Zhong, Z. Wang, N. Goddard, and C. Sutton. Sequence-to-point learning with neural networks
+[2] C. Zhang, M. Zhong, Z. Wang, N. Goddard, and C. Sutton. Sequence-to-point learning with neural networks
 for non-intrusive load monitoring. In Proceedings for Thirty-Second AAAI Conference on Artificial Intelligence.
 AAAI Press, 2018.
 
