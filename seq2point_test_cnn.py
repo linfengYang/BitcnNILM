@@ -221,7 +221,7 @@ weights_loader(model, param_file)
 
 # Calling custom test function
 test_prediction = nf.custompredictX(sess=sess,
-                                    network=model,
+                                                                                                        network=model,
                                     output_provider=test_provider,
                                     x=x,
                                     fragment_size=args.nosOfWindows,

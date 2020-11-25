@@ -85,7 +85,7 @@ def get_arguments():
                         help='The batch size of training examples')
     parser.add_argument('--n_epoch',
                         type=int,
-                        default=200,
+                        default=2, #200
                         help='The number of epochs.')
     parser.add_argument('--save_model',
                         type=int,
@@ -277,7 +277,7 @@ train_loss, val_loss, step_train_loss, step_val_loss = nf.customfit(sess=sess,
                                                                     epoch_identifier=None,
                                                                     earlystopping=True,
                                                                     min_epoch=1,
-                                                                    patience=10)
+                                                                    patience=1) #10
 
 # Following are training info
 """
