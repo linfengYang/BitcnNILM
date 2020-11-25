@@ -1,5 +1,5 @@
 """
-Revised by Jia, the code almost same with seq2point_train_cnn.py except for importing different model.
+Seq2point_train,py
 
 """
 
@@ -16,6 +16,7 @@ tf.disable_v2_behavior()
 
 #############
 
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 from keras.layers import Input
 import keras.backend as K
@@ -23,7 +24,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import argparse
-from Arguments import *
+# from Arguments import *
 
 def remove_space(string):
     return string.replace(" ","")
@@ -116,6 +117,50 @@ def get_arguments():
 args = get_arguments()
 log('Arguments: ')
 log(args)
+
+
+
+
+params_appliance = {
+    'kettle': {
+        'windowlength': 599,
+        'on_power_threshold': 200,
+        'max_on_power': 3998,
+        'mean': 700,
+        'std': 1000,
+        's2s_length': 128, },
+    'microwave': {
+        'windowlength': 599, #249
+        'on_power_threshold': 200,
+        'max_on_power': 3969,
+        'mean': 500,
+        'std': 800,
+        's2s_length': 128},
+    'fridge': {
+        'windowlength': 599,
+        'on_power_threshold': 50,
+        'max_on_power': 3323,
+        'mean': 200,
+        'std': 400,
+        's2s_length': 512},
+    'dishwasher': {
+        'windowlength': 599,
+        'on_power_threshold': 10,
+        'max_on_power': 3964,
+        'mean': 700,
+        'std': 1000,
+        's2s_length': 1536},
+    'washingmachine': {
+        'windowlength': 599,
+        'on_power_threshold': 20,
+        'max_on_power': 3999,
+        'mean': 400,
+        'std': 700,
+        's2s_length': 2000}
+    }
+
+
+
 
 # some constant parameters
 CHUNK_SIZE = 5*10**6
@@ -275,15 +320,15 @@ plt.title('Training and validation loss')
 plt.xlabel('Epochs')
 plt.ylabel('Loss')
 plt.legend()
-plt.savefig('loss-{}.png'.format(appliance_name))
+plt.savefig('BitcnNILM_599_loss-{}_mid-point.png'.format(appliance_name))
 plt.show()
-infos = pd.DataFrame(data={'train_loss': train_loss,
-                           'val_loss': val_loss
-                           })
+# infos = pd.DataFrame(data={'train_loss': train_loss,
+#                            'val_loss': val_loss
+#                            })
 
-infos.to_csv('./training_infos-{:}.csv'.format(appliance_name))
+# infos.to_csv('./training_infos-{:}.csv'.format(appliance_name))
 # infos.to_csv('./training_infos-{:}-{:}-{:}.csv'.format(appliance_name, args.transfer, args.cnn))
-log('training infos in .csv file')
+# log('training infos in .csv file')
 
 
 # This check that the CNN is the same of the beginning

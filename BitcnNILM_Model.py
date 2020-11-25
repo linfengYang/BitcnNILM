@@ -152,8 +152,3 @@ def cnn_weights_loader(model_to_fill, cnn_appliance, pretrainedmodel_dir):
 def weights_loader(model, path):
     log('Loading cnn weights from ' + path)
     model.load_weights(path + '_weights.h5')
-
-
-
-
-

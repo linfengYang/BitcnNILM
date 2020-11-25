@@ -4,7 +4,7 @@ import socket
 params_appliance = {
     'kettle': {
         'windowlength': 599,
-        'on_power_threshold': 2000,
+        'on_power_threshold': 200,
         'max_on_power': 3998,
         'mean': 700,
         'std': 1000,

@@ -259,5 +259,153 @@ def custompredictX(sess,
         output_array = np.array(output[0]).reshape(-1, output_length)
         output_container.append(output_array)
 
-    return np.vstack(output_container)
+    test = np.vstack(output_container)
+    return test
+
+def custompredictS2SX(sess,
+                  network,
+                  output_provider,
+                  x,
+                  fragment_size=1000,
+                  output_length=1,
+                  y_op=None,
+                  out_kwag=None):
+    """
+        Return the predict results of given non time-series network.
+
+        Parameters
+        ----------
+        sess : TensorFlow session
+            sess = tf.InteractiveSession()
+        network : a TensorLayer layer
+            the network will be trained
+        x : placeholder
+            the input
+        y_op : placeholder
+    """
+
+    if y_op is None:
+        y_op = network.outputs
+
+    output_container = None
+    for idx, X_out in enumerate(output_provider.feed(out_kwag['inputs'])):
+        #log(banum)
+        #banum += 1
+
+        feed_dict = {x: X_out,}
+        output = sess.run(y_op, feed_dict=feed_dict)
+        output_array = np.array(output[0]).reshape(-1, output_length)
+        if not idx:
+            output_container = output_array
+        else:
+            output_container = np.concatenate((output_container, output_array), axis=0)
+    l = output_length
+    n = len(output_container) + l - 1
+    sum_arr = np.zeros((n))
+    counts_arr = np.zeros((n))
+    o = len(sum_arr)
+    for i in range(len(output_container)):
+        sum_arr[i:i + l] += output_container[i].flatten()
+        counts_arr[i:i + l] += 1
+    for i in range(len(sum_arr)):
+        sum_arr[i] = sum_arr[i] / counts_arr[i]
+    prediction = sum_arr
+    return prediction
+
+
+
+
+
+def custompredict_fcn(sess,
+                  network,
+                  output_provider,
+                  x,
+                  fragment_size=1000,
+                  output_length=1,
+                  y_op=None,
+                  out_kwag=None):
+    """
+        Return the predict results of given non time-series network.
+
+        Parameters
+        ----------
+        sess : TensorFlow session
+            sess = tf.InteractiveSession()
+        network : a TensorLayer layer
+            the network will be trained
+        x : placeholder
+            the input
+        y_op : placeholder
+    """
+
+    if y_op is None:
+        y_op = network.outputs
+
+    output_container = []
+    banum = 0
+
+    for X_out in output_provider.feed(out_kwag['inputs']):
+        #log(banum)
+        #banum += 1
+
+        feed_dict = {x: X_out,}
+        output = sess.run(y_op, feed_dict=feed_dict)
+        output_array = np.array(output[0]).reshape(-1, output_length)
+        output_container.append(output_array)
+
+    test = np.vstack(output_container)
+    return test
+
+
+def custompredictS2SXmedian(sess,
+                  network,
+                  output_provider,
+                  x,
+                  fragment_size=1000,
+                  output_length=1,
+                  y_op=None,
+                  out_kwag=None):
+    """
+        Return the predict results of given non time-series network.
+
+        Parameters
+        ----------
+        sess : TensorFlow session
+            sess = tf.InteractiveSession()
+        network : a TensorLayer layer
+            the network will be trained
+        x : placeholder
+            the input
+        y_op : placeholder
+    """
+
+    if y_op is None:
+        y_op = network.outputs
+
+    output_container = None
+    for idx, X_out in enumerate(output_provider.feed(out_kwag['inputs'])):
+        #log(banum)
+        #banum += 1
+
+        feed_dict = {x: X_out,}
+        output = sess.run(y_op, feed_dict=feed_dict)
+        output_array = np.array(output[0]).reshape(-1, output_length)
+        if not idx:
+            output_container = output_array
+        else:
+            output_container = np.concatenate((output_container, output_array), axis=0)
+    l = output_length
+    n = len(output_container) + l - 1
+    overlapping = []
+    for i in range(n):
+        overlapping.append([])
+
+    for i in range(len(output_container)):
+        k = 0
+        for j in range(i, i+l):
+            overlapping[j].append(output_container[i][k])
+            k = k+1
+    dic_median = pd.DataFrame(overlapping).median(axis=1)
+    prediction = np.array(dic_median)
+    return prediction
 

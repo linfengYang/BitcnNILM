@@ -18,6 +18,7 @@ import pandas as pd
 import argparse
 from Arguments import *
 
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 def remove_space(string):
     return string.replace(" ","")
@@ -57,7 +58,7 @@ def get_arguments():
                         help='this is the directory to save the predictions')
     parser.add_argument('--nosOfWindows',
                         type=int,
-                        default=100,
+                        default=128,
                         help='The number of windows for prediction \
                             for each iteration.')
     parser.add_argument('--test_type',
@@ -96,6 +97,48 @@ def get_arguments():
 args = get_arguments()
 log('Arguments: ')
 log(args)
+
+
+params_appliance = {
+    'kettle': {
+        'windowlength': 599,
+        'on_power_threshold': 200,
+        'max_on_power': 3998,
+        'mean': 700,
+        'std': 1000,
+        's2s_length': 128, },
+    'microwave': {
+        'windowlength': 599, #249
+        'on_power_threshold': 200,
+        'max_on_power': 3969,
+        'mean': 500,
+        'std': 800,
+        's2s_length': 128},
+    'fridge': {
+        'windowlength': 599,
+        'on_power_threshold': 50,
+        'max_on_power': 3323,
+        'mean': 200,
+        'std': 400,
+        's2s_length': 512},
+    'dishwasher': {
+        'windowlength': 599,
+        'on_power_threshold': 10,
+        'max_on_power': 3964,
+        'mean': 700,
+        'std': 1000,
+        's2s_length': 1536},
+    'washingmachine': {
+        'windowlength': 599,
+        'on_power_threshold': 20,
+        'max_on_power': 3999,
+        'mean': 400,
+        'std': 700,
+        's2s_length': 2000}
+    }
+
+
+
 
 
 def load_dataset(filename, header=0):
@@ -230,11 +273,19 @@ sess.close()
 
 # ------------------------------------------ metric evaluation----------------------------------------------------------
 sample_second = 6.0  # sample time is 8 seconds
+###################
+on_off_metric = nm.recall_precision_accuracy_f1(ground_truth.flatten(), prediction.flatten(),threshold)
+print("============ Recall: {}".format(on_off_metric[0]))
+print("============ Precision: {}".format(on_off_metric[1]))
+print("============ Accuracy: {}".format(on_off_metric[2]))
+print("============ F1 Score: {}".format(on_off_metric[3]))
+###################
+
 log('F1:{0}'.format(nm.get_F1(ground_truth.flatten(), prediction.flatten(), threshold)))
 log('NDE:{0}'.format(nm.get_nde(ground_truth.flatten(), prediction.flatten())))
-log('\nMAE: {:}\n    -std: {:}\n    -min: {:}\n    -max: {:}\n    -q1: {:}\n    -median: {:}\n    -q2: {:}'
+print('\nMAE: {:}\n    -std: {:}\n    -min: {:}\n    -max: {:}\n    -q1: {:}\n    -median: {:}\n    -q2: {:}'
     .format(*nm.get_abs_error(ground_truth.flatten(), prediction.flatten())))
-log('SAE: {:}'.format(nm.get_sae(ground_truth.flatten(), prediction.flatten(), sample_second)))
+print('SAE: {:}'.format(nm.get_sae(ground_truth.flatten(), prediction.flatten(), sample_second)))
 log('Energy per Day: {:}'.format(nm.get_Epd(ground_truth.flatten(), prediction.flatten(), sample_second)))
 
 
