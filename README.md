@@ -2,7 +2,7 @@
 This code compares our BitcnNILM with FCN(Brewitt), S2S(Zhang) and S2P(Zhang).
 
 # Reference: 
-This code is written by Jia, Ziyue based on the code and paper from
+This code is written by Jia, Ziyue based on the code and papers from
 1. https://github.com/cbrewitt/nilm_fcn (which was written by Cillian Brewitt)
 2. https://github.com/MingjunZhong/NeuralNetNilm (which was written by Chaoyun Zhang and Mingjun Zhong)
 3. https://github.com/MingjunZhong/transferNILM/
