@@ -1,5 +1,17 @@
 # BitcnNILM
-This code compares our method with Seq2point(Zhang), which was proposed in Thirty-Second AAAI Conference on Articial Intelligence (AAAI-18), Feb. 2-7, 2018.  
+This code compares our BitcnNILM with FCN(Brewitt), S2S(Zhang) and S2P(Zhang).
+
+# Reference: 
+This code is written by Jia, Ziyue based on the code from
+1. https://github.com/cbrewitt/nilm_fcn (which was written by Cillian Brewitt)
+2. https://github.com/MingjunZhong/NeuralNetNilm (which was written by Chaoyun Zhang and Mingjun Zhong)
+3. https://github.com/MingjunZhong/transferNILM/
+ 
+1. Brewitt, Cillian , and N. Goddard . "Non-Intrusive Load Monitoring with Fully
+Convolutional Networks." (2018). arXiv:1812.03915
+2. C. Zhang, M. Zhong, Z. Wang, N. Goddard, and C. Sutton. Sequence-to-point learning with neural networks
+for non-intrusive load monitoring. In Proceedings for Thirty-Second AAAI Conference on Artificial Intelligence.
+AAAI Press, 2018.
 
 
 **Requirements**
@@ -95,7 +107,3 @@ The prediction is stored and saved in .npy file together with aggregate and grou
 `python3 seq2point_test_cnn.py --appliance_name washingmachine --datadir ../dataset_management/uk_no2/ --trained_model_dir ./trained_model_CNN --save_results_dir ./result --transfer False --plot_results True`
 
 
-# Reference: 
-Chaoyun Zhang, Mingjun Zhong, Zongzuo Wang, Nigel Goddard, and Charles Sutton. "Sequence-to-point learning with neural networks for nonintrusive load monitoring." Thirty-Second AAAI Conference on Artificial Intelligence (AAAI-18), Feb. 2-7, 2018. 
-
-The code based on Seq2point(Zhang) for fair comparison. https://github.com/MingjunZhong/transferNILM/
