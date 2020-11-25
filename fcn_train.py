@@ -1,5 +1,32 @@
 """
-reproduce by Jia,ziyue
+Created on Thu 2020
+
+####################################################################################
+# This code is to train a neural network to perform energy disaggregation,
+# i.e., given a sequence of electricity mains reading, the algorithm
+# separates the mains into appliances.
+#
+# Inputs: mains windows -- find the window length in params_appliance
+# Targets: appliances windows --
+#
+#
+# This code is written by Jia, Ziyue based on the code from
+#  1. https://github.com/cbrewitt/nilm_fcn (which was written by Cillian Brewitt)
+#  2. https://github.com/MingjunZhong/NeuralNetNilm (which was written by Chaoyun Zhang and Mingjun Zhong)
+
+# References:
+
+1. Brewitt, Cillian , and N. Goddard . "Non-Intrusive Load Monitoring with Fully
+Convolutional Networks." (2018). arXiv:1812.03915
+
+
+2.  Chaoyun Zhang, Mingjun Zhong, Zongzuo Wang, Nigel Goddard, and Charles Sutton.
+# ``Sequence-to-point learning with neural networks for nonintrusive load monitoring."
+# Thirty-Second AAAI Conference on Articial Intelligence (AAAI-18), Feb. 2-7, 2018.
+####################################################################################
+
+Updated on 2020:
+- Python 3
 
 """
 
