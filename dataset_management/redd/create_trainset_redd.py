@@ -35,7 +35,7 @@ print(appliance_name)
 
 def main():
 
-    sample_seconds = 8
+    sample_seconds = 6
     validation_percent = 10
     nrows = None
     debug = False
