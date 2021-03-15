@@ -294,7 +294,7 @@ sess.close()
 
 # ------------------------------------------ metric evaluation----------------------------------------------------------
 sample_second = 6.0  # sample time is 6 seconds
-on_off_metric = nm.recall_precision_accuracy_f1(ground_truth.flatten(), prediction,threshold)
+on_off_metric = nm.recall_precision_accuracy_f1(prediction.flatten(), ground_truth.flatten(),threshold)
 log("============ Recall: {}".format(on_off_metric[0]))
 log("============ Precision: {}".format(on_off_metric[1]))
 log("============ Accuracy: {}".format(on_off_metric[2]))
