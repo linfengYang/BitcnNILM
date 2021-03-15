@@ -272,21 +272,19 @@ sess.close()
 
 
 # ------------------------------------------ metric evaluation----------------------------------------------------------
-sample_second = 6.0  # sample time is 8 seconds
+sample_second = 6.0  # sample time is 6 seconds
 ###################
-on_off_metric = nm.recall_precision_accuracy_f1(ground_truth.flatten(), prediction.flatten(),threshold)
+on_off_metric = nm.recall_precision_accuracy_f1(prediction.flatten(), ground_truth.flatten(),threshold)
 print("============ Recall: {}".format(on_off_metric[0]))
 print("============ Precision: {}".format(on_off_metric[1]))
 print("============ Accuracy: {}".format(on_off_metric[2]))
 print("============ F1 Score: {}".format(on_off_metric[3]))
 ###################
 
-log('F1:{0}'.format(nm.get_F1(ground_truth.flatten(), prediction.flatten(), threshold)))
-log('NDE:{0}'.format(nm.get_nde(ground_truth.flatten(), prediction.flatten())))
+
 print('\nMAE: {:}\n    -std: {:}\n    -min: {:}\n    -max: {:}\n    -q1: {:}\n    -median: {:}\n    -q2: {:}'
     .format(*nm.get_abs_error(ground_truth.flatten(), prediction.flatten())))
 print('SAE: {:}'.format(nm.get_sae(ground_truth.flatten(), prediction.flatten(), sample_second)))
-log('Energy per Day: {:}'.format(nm.get_Epd(ground_truth.flatten(), prediction.flatten(), sample_second)))
 
 
 # ----------------------------------------------- save results ---------------------------------------------------------
